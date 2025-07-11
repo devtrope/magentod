@@ -35,6 +35,55 @@
     },
     "header_background_image": "clark-street-mercantile-P3pI6xzovu0-unsplash.jpg",
     "banner_message": "Livraison gratuite à partir de 50€ d'achat !",
+    "sections": [
+        {
+            "type": "products",
+            "title": "Produits à la une",
+            "subtitle": "Nos best-sellers du moment",
+            "products": [
+                {
+                    "name": "Produit 1",
+                    "price": "19,99€",
+                    "image": "product1.jpg",
+                    "link": "#"
+                },
+                {
+                    "name": "Produit 2",
+                    "price": "29,99€",
+                    "image": "product2.jpg",
+                    "link": "#"
+                },
+                {
+                    "name": "Produit 3",
+                    "price": "39,99€",
+                    "image": "product3.jpg",
+                    "link": "#"
+                },
+                {
+                    "name": "Produit 4",
+                    "price": "49,99€",
+                    "image": "product4.jpg",
+                    "link": "#"
+                }
+            ]
+        },
+        {
+            "type": "text_image",
+            "title": "A propos de nous",
+            "subtitle": "Découvrez notre histoire et notre mission",
+            "text": "Notre mission est de fournir une expérience d'achat exceptionnelle. Nous croyons en la qualité et en l'innovation. Nous sommes passionnés par ce que nous faisons et nous nous engageons à offrir le meilleur service possible. Nous sommes là pour vous aider à trouver les produits qui vous conviennent le mieux. Nous sommes fiers de notre équipe et de notre communauté.",
+            "image": "clark-street-mercantile-P3pI6xzovu0-unsplash.jpg",
+            "image_alt": "A propos de nous"
+        },
+        {
+            "type": "image_text",
+            "title": "Nos valeurs",
+            "subtitle": "Ce qui nous guide",
+            "text": "Notre mission est de fournir une expérience d'achat exceptionnelle. Nous croyons en la qualité et en l'innovation. Nous sommes passionnés par ce que nous faisons et nous nous engageons à offrir le meilleur service possible. Nous sommes là pour vous aider à trouver les produits qui vous conviennent le mieux. Nous sommes fiers de notre équipe et de notre communauté.",
+            "image": "clark-street-mercantile-P3pI6xzovu0-unsplash.jpg",
+            "image_alt": "Nos valeurs"
+        }
+    ],
     "newsletter_title": "Inscrivez-vous à notre newsletter",
     "newsletter_description": "Recevez les dernières nouvelles et offres exclusives.",
     "footer": {

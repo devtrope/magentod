@@ -120,7 +120,7 @@ html {
     margin-top: 32px;
 }
 
-.grid {
+.products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
@@ -132,19 +132,20 @@ html {
     object-fit: cover;
 }
 
-.product-title {
+.product-name {
     font-size: 14px;
     font-weight: 600;
     color: var(--text);
 }
 
-.grid-double {
+.grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 }
 
-.grid-double img {
+.grid__left img,
+.grid__right img {
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;

@@ -43,79 +43,45 @@
                 <?= $shop['banner_message'] ?>
             </div>
         <?php endif; ?> 
-        <div class="section">
-            <div class="section-content">
-                <div class="section-title">Produits à la une</div>
-                <div class="section-subtitle">Sous-titre de la section</div>
-                <div class="grid">
-                    <?php for ($i = 0; $i < 8; $i++) : ?>
-                        <div class="product">
-                            <img src="merch.jpg" alt="" class="product-image">
-                            <div class="product-info">
-                                <h3 class="product-title">Nom du produit</h3>
-                                <span class="product-price">€99.99</span>
+        <?php foreach ($shop['sections'] as $section): ?>
+            <div class="section">
+                <div class="section-content">
+                    <div class="section-title"><?= $section['title'] ?></div>
+                    <div class="section-subtitle"><?= $section['subtitle'] ?></div>
+                    <?php if ($section['type'] === 'products') : ?>
+                        <div class="products-grid">
+                            <?php foreach ($section['products'] as $product): ?>
+                                <div class="product">
+                                    <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="product-image">
+                                    <div class="product-info">
+                                        <h3 class="product-name"><?= $product['name'] ?></h3>
+                                        <span class="product-price"><?= $product['price'] ?></span>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php elseif ($section['type'] === 'text_image'): ?>
+                        <div class="grid">
+                            <div class="grid__left">
+                                <div class="section-text"><?= $section['text'] ?></div>
+                            </div>
+                            <div class="grid__right">
+                                <img src="<?= $section['image'] ?>" alt="<?= $section['image_alt'] ?>">
                             </div>
                         </div>
-                    <?php endfor; ?>
+                    <?php elseif ($section['type'] === 'image_text'): ?>
+                        <div class="grid">
+                            <div class="grid__left">
+                                <img src="<?= $section['image'] ?>" alt="<?= $section['image_alt'] ?>">
+                            </div>
+                            <div class="grid__right">
+                                <div class="section-text"><?= $section['text'] ?></div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
-        </div>
-        <div class="section gray">
-            <div class="section-content">
-                <div class="section-title">Titre de section</div>
-                <div class="grid-double">
-                    <div class="grid-double__left">
-                        <div class="section-subtitle">Sous-titre de la section</div>
-                        <div class="section-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur expedita distinctio velit
-                            cumque laboriosam inventore? Sit molestiae eum beatae tempore illo recusandae, corporis unde rerum,
-                            placeat laudantium consequatur nobis minima.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur expedita distinctio velit
-                            cumque laboriosam inventore? Sit molestiae eum beatae tempore illo recusandae, corporis unde rerum,
-                            placeat laudantium consequatur nobis minima.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur expedita distinctio velit
-                            cumque laboriosam inventore? Sit molestiae eum beatae tempore illo recusandae, corporis unde rerum,
-                            placeat laudantium consequatur nobis minima.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur expedita distinctio velit
-                            cumque laboriosam inventore? Sit molestiae eum beatae tempore illo recusandae, corporis unde rerum,
-                            placeat laudantium consequatur nobis minima.
-                        </div>
-                        <div class="section-buttons">
-                            <button class="btn btn-primary">En savoir plus</button>
-                        </div>
-                    </div>
-                    <img src="clark-street-mercantile-P3pI6xzovu0-unsplash.jpg" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="section">
-            <div class="section-content">
-                <div class="section-title">Titre de section</div>
-                <div class="grid-double">
-                    <img src="clark-street-mercantile-P3pI6xzovu0-unsplash.jpg" alt="">
-                    <div class="grid-double__left">
-                        <div class="section-subtitle">Sous-titre de la section</div>
-                        <div class="section-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur expedita distinctio velit
-                            cumque laboriosam inventore? Sit molestiae eum beatae tempore illo recusandae, corporis unde rerum,
-                            placeat laudantium consequatur nobis minima.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur expedita distinctio velit
-                            cumque laboriosam inventore? Sit molestiae eum beatae tempore illo recusandae, corporis unde rerum,
-                            placeat laudantium consequatur nobis minima.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur expedita distinctio velit
-                            cumque laboriosam inventore? Sit molestiae eum beatae tempore illo recusandae, corporis unde rerum,
-                            placeat laudantium consequatur nobis minima.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur expedita distinctio velit
-                            cumque laboriosam inventore? Sit molestiae eum beatae tempore illo recusandae, corporis unde rerum,
-                            placeat laudantium consequatur nobis minima.
-                        </div>
-                        <div class="section-buttons">
-                            <button class="btn btn-primary">En savoir plus</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php endforeach; ?>
         <div class="section">
             <div class="section-content">
                 <div class="section-title"><?= $shop['newsletter_title'] ?></div>
