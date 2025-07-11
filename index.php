@@ -1,10 +1,15 @@
+<?php
+
+    $shop = json_decode(file_get_contents('shop.json'), true);
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
-    <title>Template de test</title>
+    <meta name="description" content="<?= $shop['meta_description'] ?>">
+    <title><?= $shop['meta_title'] ?></title>
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,26 +21,28 @@
         <nav class="navbar">
             <div class="navbar-content">
                 <div class="navbar-content__left">
-                    <img src="logo.jpeg" alt="" class="logo">
+                    <img src="<?= $shop['logo_image'] ?>" alt="<?= $shop['logo_alt'] ?>" class="logo">
                     <ul>
-                        <li><a href="#">Produits</a></li>
-                        <li><a href="#">Qui sommes-nous ?</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <?php foreach ($shop['navbar']['items'] as $item): ?>
+                            <li><a href="<?= $item['link'] ?>"><?= $item['label'] ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="navbar-content__right">
                     <ul>
-                        <li><a href="#"><span class="material-symbols-outlined">person</span></a></li>
-                        <li><a href="#"><span class="material-symbols-outlined">shopping_cart</span></a></li>
-                        <li><a href="#"><span class="material-symbols-outlined">search</span></a></li>
+                        <?php foreach ($shop['navbar']['icons'] as $icon): ?>
+                            <li><a href="<?= $icon['link'] ?>"><span class="material-symbols-outlined"><?= $icon['name'] ?></span></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="header"></div>
-        <div class="banner">
-            Livraison gratuite à partir de 50€ d'achat !
-        </div>
+        <div class="header" style="background-image: url(<?= $shop['header_background_image'] ?>)"></div>
+        <?php if ($shop['banner_message'] !== null) : ?>
+            <div class="banner">
+                <?= $shop['banner_message'] ?>
+            </div>
+        <?php endif; ?> 
         <div class="section">
             <div class="section-content">
                 <div class="section-title">Produits à la une</div>
@@ -111,8 +118,8 @@
         </div>
         <div class="section">
             <div class="section-content">
-                <div class="section-title">S'inscrire à la newsletter</div>
-                <div class="section-subtitle">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus illum aspernatur iste esse molestias eligendi doloribus earum tempore, unde ad maiores optio fugit error impedit, laudantium quo explicabo saepe ex.</div>
+                <div class="section-title"><?= $shop['newsletter_title'] ?></div>
+                <div class="section-subtitle"><?= $shop['newsletter_description'] ?></div>
                 <form action="">
                     <input class="input-form" type="text" name="" id="" placeholder="Entrez votre email">
                 </form>
@@ -121,24 +128,19 @@
         <footer>
             <div class="footer-content">
                 <div class="footer-content__block">
-                    <img src="logo.jpeg" alt="" class="logo">
-                    <p>© 2023 Votre entreprise. Tous droits réservés.</p>
+                    <img src="<?= $shop['logo_image'] ?>" alt="<?= $shop['logo_alt'] ?>" class="logo">
+                    <p><?= $shop['footer']['text'] ?></p>
                 </div>
-                <div class="footer-content__block">
-                    <div class="footer-title">A propos</div>
-                    <ul>
-                        <li><a href="#">Nous connaître</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-content__block">
-                    <div class="footer-title">Mentions légales</div>
-                    <ul>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">Conditions d'utilisation</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
+                <?php foreach ($shop['footer']['blocks'] as $block): ?>
+                    <div class="footer-content__block">
+                        <div class="footer-title"><?= $block['title'] ?></div>
+                        <ul>
+                            <?php foreach ($block['links'] as $link): ?>
+                                <li><a href="<?= $link['link'] ?>"><?= $link['label'] ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </footer>
     </main>

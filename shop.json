@@ -1,0 +1,71 @@
+{
+    "meta_description": "This is a default template for a Magentod store. It includes sections for products, categories, and a footer.",
+    "meta_title": "Magentod Default Template",
+    "logo_image": "logo.jpeg",
+    "logo_alt": "Magentod Logo",
+    "navbar": {
+        "items": [
+            {
+                "label": "Produits",
+                "link": "#"
+            },
+            {
+                "label": "Qui sommes-nous ?",
+                "link": "#"
+            },
+            {
+                "label": "Contact",
+                "link": "#"
+            }
+        ],
+        "icons": [
+            {
+                "name": "person",
+                "link": "#"
+            },
+            {
+                "name": "shopping_cart",
+                "link": "#"
+            },
+            {
+                "name": "search",
+                "link": "#"
+            }
+        ]
+    },
+    "header_background_image": "clark-street-mercantile-P3pI6xzovu0-unsplash.jpg",
+    "banner_message": "Livraison gratuite à partir de 50€ d'achat !",
+    "newsletter_title": "Inscrivez-vous à notre newsletter",
+    "newsletter_description": "Recevez les dernières nouvelles et offres exclusives.",
+    "footer": {
+        "text": "© 2023 Magentod. Tous droits réservés.",
+        "blocks": [
+            {
+                "title": "A propos",
+                "links": [
+                    {
+                        "label": "Qui sommes-nous ?",
+                        "link": "#"
+                    },
+                    {
+                        "label": "Contact",
+                        "link": "#"
+                    }
+                ]
+            },
+            {
+                "title": "Services",
+                "links": [
+                    {
+                        "label": "Livraison",
+                        "link": "#"
+                    },
+                    {
+                        "label": "Retours",
+                        "link": "#"
+                    }
+                ]
+            }
+        ]
+    }
+}
