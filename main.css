@@ -1,0 +1,215 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    --border: #D8D8D8;
+    --gray: #F5F5F5;
+    --main: #1d6420;
+    --main-hover: #29772d;
+    --text: #1A1818;
+    --text-transparent: #1A1818CA;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #FFF;
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar-content {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-content .logo {
+    width: 70px;
+}
+
+.navbar-content__left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.navbar-content__right ul,
+.navbar-content__left ul {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.navbar-content__right ul li,
+.navbar-content__left ul li {
+    list-style: none;
+}
+
+.navbar-content__right ul li a,
+.navbar-content__left ul li a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.navbar-content__right ul li a span.material-symbols-outlined {
+    font-size: 24px;
+    margin-top: 4px;
+}
+
+.navbar-content__right ul li a:hover,
+.navbar-content__left ul li a:hover {
+    color: var(--main);
+    transition-duration: .3s;
+}
+
+.header {
+    height: 750px;
+    background: url('clark-street-mercantile-P3pI6xzovu0-unsplash.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.banner {
+    background: #000;
+    padding: 8px;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section.gray {
+    background: var(--gray);
+}
+
+.section-content {
+    width: 60%;
+    margin: 64px auto;
+    padding: 64px;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.section-subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-transparent);
+    margin-bottom: 64px;
+}
+
+.section-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-transparent);
+    line-height: 24px;
+}
+
+.section-buttons {
+    margin-top: 32px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.product-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.grid-double {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.grid-double img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.btn {
+    box-shadow: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: var(--main);
+    color: #FFF;
+    padding: 12px 24px;
+    border-radius: 4px;
+    border: 1px solid var(--main);
+}
+
+.btn-primary:hover {
+    background: var(--main-hover);
+    border-color: var(--main-hover);
+    transition-duration: .3s;
+    cursor: pointer;
+}
+
+.input-form {
+    width: 100%;
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+footer {
+    border-top: 1px solid var(--border);
+}
+
+.footer-content {
+    width: 60%;
+    margin: auto;
+    padding: 32px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.footer-content ul {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-content ul li {
+    list-style: none;
+}
+
+.footer-content ul li a {
+    text-decoration: none;
+    color: var(--text-transparent);
+    font-size: 16px;
+    
+}
