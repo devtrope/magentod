@@ -1,7 +1,7 @@
 {
     "meta_description": "This is a default template for a Magentod store. It includes sections for products, categories, and a footer.",
     "meta_title": "Magentod Default Template",
-    "logo_image": "logo.jpeg",
+    "logo_image": "assets/images/logo.jpeg",
     "logo_alt": "Magentod Logo",
     "navbar": {
         "items": [
@@ -33,7 +33,7 @@
             }
         ]
     },
-    "header_background_image": "clark-street-mercantile-P3pI6xzovu0-unsplash.jpg",
+    "header_background_image": "assets/images/clark-street-mercantile-P3pI6xzovu0-unsplash.jpg",
     "banner_message": "Livraison gratuite à partir de 50€ d'achat !",
     "sections": [
         {
@@ -44,19 +44,19 @@
                 {
                     "name": "Produit 1",
                     "price": "19,99€",
-                    "image": "product1.jpg",
+                    "image": "assets/images/product1.jpg",
                     "link": "/product.php"
                 },
                 {
                     "name": "Produit 2",
                     "price": "29,99€",
-                    "image": "product2.jpg",
+                    "image": "assets/images/product2.jpg",
                     "link": "#"
                 },
                 {
                     "name": "Produit 3",
                     "price": "39,99€",
-                    "image": "product3.jpg",
+                    "image": "assets/images/product3.jpg",
                     "link": "#"
                 }
             ]
@@ -66,7 +66,7 @@
             "title": "A propos de nous",
             "subtitle": "Découvrez notre histoire et notre mission",
             "text": "Notre mission est de fournir une expérience d'achat exceptionnelle. Nous croyons en la qualité et en l'innovation. Nous sommes passionnés par ce que nous faisons et nous nous engageons à offrir le meilleur service possible. Nous sommes là pour vous aider à trouver les produits qui vous conviennent le mieux. Nous sommes fiers de notre équipe et de notre communauté.",
-            "image": "clark-street-mercantile-P3pI6xzovu0-unsplash.jpg",
+            "image": "assets/images/clark-street-mercantile-P3pI6xzovu0-unsplash.jpg",
             "image_alt": "A propos de nous"
         },
         {
@@ -74,7 +74,7 @@
             "title": "Nos valeurs",
             "subtitle": "Ce qui nous guide",
             "text": "Notre mission est de fournir une expérience d'achat exceptionnelle. Nous croyons en la qualité et en l'innovation. Nous sommes passionnés par ce que nous faisons et nous nous engageons à offrir le meilleur service possible. Nous sommes là pour vous aider à trouver les produits qui vous conviennent le mieux. Nous sommes fiers de notre équipe et de notre communauté.",
-            "image": "clark-street-mercantile-P3pI6xzovu0-unsplash.jpg",
+            "image": "assets/images/clark-street-mercantile-P3pI6xzovu0-unsplash.jpg",
             "image_alt": "Nos valeurs"
         }
     ],

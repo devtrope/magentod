@@ -5,10 +5,10 @@
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-    <?php include 'head.php'; ?>
+    <?php include 'includes/head.php'; ?>
 <body>
     <main>
-        <?php include 'header.php'; ?>
+        <?php include 'includes/header.php'; ?>
         <div class="site-content">
             <div class="header" style="background-image: url(<?= $shop['header_background_image'] ?>)"></div>
             <?php if ($shop['banner_message'] !== null) : ?>
@@ -25,7 +25,7 @@
                             <div class="products-grid">
                                 <?php foreach ($section['products'] as $product): ?>
                                     <a href="<?= $product['link'] ?>" class="product">
-                                        <img src="<?= $product['image'] ?>" alt="<?= $product['title'] ?>" class="product-image">
+                                        <img src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>" class="product-image">
                                         <div class="product-info">
                                             <h3 class="product-name"><?= $product['name'] ?></h3>
                                             <span class="product-price"><?= $product['price'] ?></span>
@@ -55,8 +55,8 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-            <?php include 'newsletter.php'; ?>
-            <?php include 'footer.php'; ?>
+            <?php include 'includes/newsletter.php'; ?>
+            <?php include 'includes/footer.php'; ?>
         </div>
     </main>
 </body>

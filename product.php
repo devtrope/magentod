@@ -6,10 +6,10 @@
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-    <?php include 'head.php'; ?>
+    <?php include 'includes/head.php'; ?>
 <body>
     <main>
-        <?php include 'header.php'; ?>
+        <?php include 'includes/header.php'; ?>
         
         <div class="site-content">
             <?php if ($shop['banner_message'] !== null) : ?>
@@ -76,8 +76,8 @@
                 </div>
             </div>
     
-            <?php include 'newsletter.php'; ?>
-            <?php include 'footer.php'; ?>
+            <?php include 'includes/newsletter.php'; ?>
+            <?php include 'includes/footer.php'; ?>
         </div>
     </main>
 </body>
