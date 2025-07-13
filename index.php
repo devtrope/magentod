@@ -21,37 +21,7 @@
                     <div class="section-content">
                         <div class="section-title"><?= $section['title'] ?></div>
                         <div class="section-subtitle"><?= $section['subtitle'] ?></div>
-                        <?php if ($section['type'] === 'products') : ?>
-                            <div class="products-grid">
-                                <?php foreach ($section['products'] as $product): ?>
-                                    <a href="<?= $product['link'] ?>" class="product">
-                                        <img src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>" class="product-image">
-                                        <div class="product-info">
-                                            <h3 class="product-name"><?= $product['name'] ?></h3>
-                                            <span class="product-price"><?= $product['price'] ?></span>
-                                        </div>
-                                    </a>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php elseif ($section['type'] === 'text_image'): ?>
-                            <div class="grid">
-                                <div class="grid__left">
-                                    <div class="section-text"><?= $section['text'] ?></div>
-                                </div>
-                                <div class="grid__right">
-                                    <img src="<?= $section['image'] ?>" alt="<?= $section['image_alt'] ?>">
-                                </div>
-                            </div>
-                        <?php elseif ($section['type'] === 'image_text'): ?>
-                            <div class="grid">
-                                <div class="grid__left">
-                                    <img src="<?= $section['image'] ?>" alt="<?= $section['image_alt'] ?>">
-                                </div>
-                                <div class="grid__right">
-                                    <div class="section-text"><?= $section['text'] ?></div>
-                                </div>
-                            </div>
-                        <?php endif; ?>
+                        <?php include 'includes/blocks/' . $section['type'] . '.php'; ?>
                     </div>
                 </div>
             <?php endforeach; ?>
