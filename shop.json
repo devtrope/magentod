@@ -45,7 +45,7 @@
                     "name": "Produit 1",
                     "price": "19,99€",
                     "image": "product1.jpg",
-                    "link": "#"
+                    "link": "/product.php"
                 },
                 {
                     "name": "Produit 2",
@@ -57,12 +57,6 @@
                     "name": "Produit 3",
                     "price": "39,99€",
                     "image": "product3.jpg",
-                    "link": "#"
-                },
-                {
-                    "name": "Produit 4",
-                    "price": "49,99€",
-                    "image": "product4.jpg",
                     "link": "#"
                 }
             ]
