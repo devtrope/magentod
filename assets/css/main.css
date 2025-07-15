@@ -22,6 +22,7 @@ html {
     height: 70px;
     display: flex;
     align-items: center;
+    z-index: 2;
 }
 
 .navbar-content {
@@ -148,6 +149,11 @@ html {
     color: var(--text);
 }
 
+.product:hover > img {
+    transform: scale(1.02);
+    transition-duration: .3s;
+}
+
 .product-images {
     display: flex;
     gap: 16px;
@@ -159,6 +165,7 @@ html {
     object-fit: cover;
     border: 1px solid var(--border);
     border-radius: 4px;
+    transition-duration: .3s;
 }
 
 .product-slider {
@@ -173,6 +180,11 @@ html {
     object-fit: cover;
     border: 1px solid var(--border);
     border-radius: 4px;
+}
+
+.product-slider img:hover {
+    cursor: pointer;
+    border-color: var(--main);
 }
 
 .product-slider img.selected {

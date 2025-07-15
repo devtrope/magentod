@@ -18,7 +18,12 @@ function getProductsByShop() {
 }
 
 function getProductDatas(int $productId) {
-    $req = database()->prepare('SELECT p.*, (SELECT image FROM product_image WHERE product_id = p.id AND main = 1) as image, (SELECT image_alt FROM product_image WHERE product_id = p.id AND main = 1) as image_alt FROM product p WHERE p.id = :id;');
+    $req = database()->prepare('SELECT p.*,
+    (SELECT image FROM product_image WHERE product_id = p.id AND main = 1) as image,
+    (SELECT image_alt FROM product_image WHERE product_id = p.id AND main = 1) as image_alt,
+    CASE WHEN category_id IS NULL THEN NULL ELSE
+    (SELECT name FROM category WHERE id = p.category_id) END as category
+    FROM product p WHERE p.id = :id');
     $req->bindParam(':id', $productId, PDO::PARAM_INT);
     $req->execute();
     return $req->fetch(PDO::FETCH_ASSOC);

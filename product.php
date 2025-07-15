@@ -24,7 +24,9 @@
             <div class="breadcrumb">
                 <ul>
                     <li><a href="/">Accueil</a></li>
-                    <li><a href="#">Catégorie</a></li>
+                    <?php if ($product['category']): ?>
+                        <li><a href="#"><?= $product['category'] ?></a></li>
+                    <?php endif; ?>
                     <li><?= $product['name'] ?></li>
                 </ul>
             </div>
@@ -43,7 +45,7 @@
                         <div class="product-name" style="font-size: 34px; margin-bottom: 32px;"><?= $product['name'] ?></div>
                         <div class="product-description"><?= $product['description'] ?></div>
                         <div class="product-price"><?= $product['price'] / 100 ?>€</div>
-                        <button class="btn btn-primary" style="margin-top: 16px;width: 100%;">
+                        <button class="btn btn-primary" style="margin-top: 16px;">
                             <span class="material-symbols-outlined">shopping_cart</span>
                             Ajouter au panier
                         </button>
