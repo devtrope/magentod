@@ -42,3 +42,18 @@ function getPageByShopAndUri(string $uri) {
     $req->execute();
     return $req->fetch(PDO::FETCH_ASSOC);
 }
+
+function renderBlocks(string $content) {
+    return preg_replace_callback('/\[(\w+)\]/', function($matches) {
+        $block = $matches[1];
+        $blockFile = __DIR__ . '/../includes/blocks/' . $block . '.php';
+
+        if (file_exists($blockFile)) {
+            ob_start();
+            include $blockFile;
+            return ob_get_clean();
+        } else {
+            return "<!-- Block [$block] introuvable -->";
+        }
+    }, $content);
+}

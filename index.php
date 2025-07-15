@@ -11,5 +11,5 @@ if (! $page) {
     exit;
 }
 
-$content = $page['content'];
+$content = renderBlocks($page['content']);
 include 'views/template.php';
