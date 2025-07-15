@@ -13,7 +13,9 @@
     <main>
         <?php include 'includes/header.php'; ?>
         <div class="site-content">
-            <div class="header" style="background-image: url(<?= $home['header_background_image'] ?>)"></div>
+            <div class="header">
+                <img src="<?= $home['header_background_image'] ?>" alt="Header image">
+            </div>
             <?php foreach ($home['sections'] as $section): ?>
                 <div class="section">
                     <div class="section-content">
