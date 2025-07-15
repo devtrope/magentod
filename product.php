@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <?php include 'includes/head.php'; ?>
+    <script src="assets/js/main.js" defer></script>
 <body>
     <main>
         <?php include 'includes/header.php'; ?>
@@ -36,14 +37,14 @@
                     <div class="product-images">
                         <div class="product-slider">
                             <?php foreach (getProductImages($product['id']) as $image): ?>
-                                <img src="<?= $image['image'] ?>" alt="<?= $image['image_alt'] ?>" class="product-image <?= $image['main'] ? 'selected' : '' ?>">
+                                <img src="<?= $image['image'] ?>" alt="<?= $image['image_alt'] ?>" class="product-image product-slider-image <?= $image['main'] ? 'selected' : '' ?>" data-src="<?= $image['image'] ?>">
                             <?php endforeach; ?>
                         </div>
-                        <img src="<?= $product['image'] ?>" alt="<?= $product['image_alt'] ?>" class="product-image">
+                        <img src="<?= $product['image'] ?>" alt="<?= $product['image_alt'] ?>" class="product-image main-image">
                     </div>
                     <div class="product-informations">
                         <div class="product-name" style="font-size: 34px; margin-bottom: 32px;"><?= $product['name'] ?></div>
-                        <div class="product-description"><?= $product['description'] ?></div>
+                        <div class="product-description"><?= nl2br($product['description']) ?></div>
                         <div class="product-price"><?= $product['price'] / 100 ?>€</div>
                         <button class="btn btn-primary" style="margin-top: 16px;">
                             <span class="material-symbols-outlined">shopping_cart</span>

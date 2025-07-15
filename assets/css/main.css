@@ -238,12 +238,13 @@ html {
 
 .btn {
     box-shadow: none;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    text-transform: uppercase;
 }
 
 .btn span.material-symbols-outlined {
