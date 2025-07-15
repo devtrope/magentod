@@ -1,6 +1,9 @@
 <?php
 
-    $shop = json_decode(file_get_contents('shop.json'), true);
+    require_once 'functions/functions.php';
+
+    $shop = shopDatas();
+    $home = json_decode(file_get_contents('shop.json'), true);
 
 ?>
 <!DOCTYPE html>
@@ -10,13 +13,13 @@
     <main>
         <?php include 'includes/header.php'; ?>
         <div class="site-content">
-            <div class="header" style="background-image: url(<?= $shop['header_background_image'] ?>)"></div>
-            <?php if ($shop['banner_message'] !== null) : ?>
+            <div class="header" style="background-image: url(<?= $home['header_background_image'] ?>)"></div>
+            <?php if ($home['banner_message'] !== null) : ?>
                 <div class="banner">
-                    <?= $shop['banner_message'] ?>
+                    <?= $home['banner_message'] ?>
                 </div>
             <?php endif; ?> 
-            <?php foreach ($shop['sections'] as $section): ?>
+            <?php foreach ($home['sections'] as $section): ?>
                 <div class="section">
                     <div class="section-content">
                         <div class="section-title"><?= $section['title'] ?></div>

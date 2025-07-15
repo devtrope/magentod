@@ -1,10 +1,10 @@
 <footer>
     <div class="footer-content">
         <div class="footer-content__block">
-            <img src="<?= $shop['logo_image'] ?>" alt="<?= $shop['logo_alt'] ?>" class="logo">
-            <p><?= $shop['footer']['text'] ?></p>
+            <img src="<?= $shop['logo'] ?>" alt="<?= $shop['logo_alt'] ?>" class="logo">
+            <p><?= $home['footer']['text'] ?></p>
         </div>
-        <?php foreach ($shop['footer']['blocks'] as $block): ?>
+        <?php foreach ($home['footer']['blocks'] as $block): ?>
             <div class="footer-content__block">
                 <div class="footer-title"><?= $block['title'] ?></div>
                 <ul>
