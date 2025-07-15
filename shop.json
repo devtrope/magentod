@@ -40,27 +40,7 @@
         {
             "type": "products",
             "title": "Produits à la une",
-            "subtitle": "Nos best-sellers du moment",
-            "products": [
-                {
-                    "name": "Produit 1",
-                    "price": "19,99€",
-                    "image": "assets/images/product1.jpg",
-                    "link": "/product.php"
-                },
-                {
-                    "name": "Produit 2",
-                    "price": "29,99€",
-                    "image": "assets/images/product2.jpg",
-                    "link": "#"
-                },
-                {
-                    "name": "Produit 3",
-                    "price": "39,99€",
-                    "image": "assets/images/product3.jpg",
-                    "link": "#"
-                }
-            ]
+            "subtitle": "Nos best-sellers du moment"
         },
         {
             "type": "text_image",
