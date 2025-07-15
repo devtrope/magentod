@@ -2,7 +2,7 @@
 
     require_once 'functions/functions.php';
 
-    $shop = shopDatas();
+    $shop = getShopDatas();
     $home = json_decode(file_get_contents('shop.json'), true);
 
 ?>
