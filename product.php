@@ -33,10 +33,9 @@
                 <div class="product-header__content">
                     <div class="product-images">
                         <div class="product-slider">
-                            <img src="<?= $product['image'] ?>" alt="<?= $product['image_alt'] ?>" class="product-image selected">
-                            <img src="<?= $product['image'] ?>" alt="<?= $product['image_alt'] ?>" class="product-image">
-                            <img src="<?= $product['image'] ?>" alt="<?= $product['image_alt'] ?>" class="product-image">
-                            <img src="<?= $product['image'] ?>" alt="<?= $product['image_alt'] ?>" class="product-image">
+                            <?php foreach (getProductImages($product['id']) as $image): ?>
+                                <img src="<?= $image['image'] ?>" alt="<?= $image['image_alt'] ?>" class="product-image <?= $image['main'] ? 'selected' : '' ?>">
+                            <?php endforeach; ?>
                         </div>
                         <img src="<?= $product['image'] ?>" alt="<?= $product['image_alt'] ?>" class="product-image">
                     </div>

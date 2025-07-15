@@ -13,13 +13,20 @@ function getShopDatas() {
 }
 
 function getProductsByShop() {
-    $req = database()->query('SELECT * FROM product WHERE shop_id = 1');
+    $req = database()->query('SELECT p.*, (SELECT image FROM product_image WHERE product_id = p.id AND main = 1) as image, (SELECT image_alt FROM product_image WHERE product_id = p.id AND main = 1) as image_alt FROM product p WHERE shop_id = 1');
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function getProductDatas(int $productId) {
-    $req = database()->prepare('SELECT * FROM product WHERE id = :id');
+    $req = database()->prepare('SELECT p.*, (SELECT image FROM product_image WHERE product_id = p.id AND main = 1) as image, (SELECT image_alt FROM product_image WHERE product_id = p.id AND main = 1) as image_alt FROM product p WHERE p.id = :id;');
     $req->bindParam(':id', $productId, PDO::PARAM_INT);
     $req->execute();
     return $req->fetch(PDO::FETCH_ASSOC);
+}
+
+function getProductImages(int $productId) {
+    $req = database()->prepare('SELECT * FROM product_image WHERE product_id = :id');
+    $req->bindParam(':id', $productId, PDO::PARAM_INT);
+    $req->execute();
+    return $req->fetchAll(PDO::FETCH_ASSOC);
 }
