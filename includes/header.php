@@ -1,3 +1,10 @@
+<?php if ($home['banner_message'] !== null) : ?>
+    <div class="banner">
+        <div class="banner-message">
+            <?= $home['banner_message'] ?>
+        </div>
+    </div>
+<?php endif; ?>
 <nav class="navbar">
     <div class="navbar-content">
         <div class="navbar-content__left">

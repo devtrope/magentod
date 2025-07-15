@@ -16,12 +16,6 @@
         <?php include 'includes/header.php'; ?>
         
         <div class="site-content">
-            <?php if ($home['banner_message'] !== null) : ?>
-                <div class="banner">
-                    <?= $home['banner_message'] ?>
-                </div>
-            <?php endif; ?>
-
             <div class="breadcrumb">
                 <ul>
                     <li><a href="/">Accueil</a></li>

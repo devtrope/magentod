@@ -14,11 +14,6 @@
         <?php include 'includes/header.php'; ?>
         <div class="site-content">
             <div class="header" style="background-image: url(<?= $home['header_background_image'] ?>)"></div>
-            <?php if ($home['banner_message'] !== null) : ?>
-                <div class="banner">
-                    <?= $home['banner_message'] ?>
-                </div>
-            <?php endif; ?> 
             <?php foreach ($home['sections'] as $section): ?>
                 <div class="section">
                     <div class="section-content">
