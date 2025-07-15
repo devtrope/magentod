@@ -5,8 +5,8 @@ html {
     font-family: 'Outfit', sans-serif;
     --border: #D8D8D8;
     --gray: #F5F5F5;
-    --main: #ff4632;
-    --main-hover: #ff4632CC;
+    --main: #7841FC;
+    --main-hover: #7841FCCC;
     --success: #00B74A;
     --text: #1A1818;
     --text-transparent: #1A1818CA;
@@ -20,6 +20,8 @@ html {
     background: #FFF;
     border-bottom: 1px solid var(--border);
     height: 70px;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-content {
@@ -31,7 +33,7 @@ html {
 }
 
 .navbar-content .logo {
-    width: 70px;
+    width: 100px;
 }
 
 .navbar-content__left {
@@ -193,7 +195,7 @@ html {
 .product-price {
     font-size: 20px;
     font-weight: 600;
-    color: var(--main);
+    color: var(--text);
 }
 
 .product-availability {
@@ -269,6 +271,10 @@ footer {
     padding: 32px 0;
     display: flex;
     justify-content: space-between;
+}
+
+.footer-content .logo {
+    width: 100px;
 }
 
 .footer-title {
