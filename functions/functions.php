@@ -2,7 +2,9 @@
 
 function database() {
     try {
-        return new PDO('mysql:host=localhost;dbname=magentod', 'root', 'root');
+        return new PDO('mysql:host=localhost;dbname=magentod', 'root', 'root', [
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4',
+        ]);
     } catch (PDOException $e) {
         echo 'Connection failed: ' . $e->getMessage();
     }
@@ -44,8 +46,23 @@ function getPageByShopAndUri(string $uri) {
 }
 
 function renderBlocks(string $content) {
-    return preg_replace_callback('/\[(\w+)\]/', function($matches) {
-        $block = $matches[1];
+    return preg_replace_callback('/\[(\w+)(.*?)\]/', function($matches) {
+        $block = basename($matches[1]);
+        $paramsString = isset($matches[2]) ? trim($matches[2]) : null;
+
+        if ($paramsString) {
+            preg_match_all('/(\w+)=("[^"]*"|\'[^\']*\'|\w+)/', $paramsString, $paramMatches, PREG_SET_ORDER);
+            $params = [];
+    
+            foreach ($paramMatches as $param) {
+                $key = $param[1];
+                $value = trim($param[2], '"\''); // retire les guillemets
+                $params[$key] = $value;
+            }
+    
+            extract($params);
+        }
+
         $blockFile = __DIR__ . '/../includes/blocks/' . $block . '.php';
 
         if (file_exists($blockFile)) {
