@@ -1,9 +1,4 @@
 {
-    "meta_description": "This is a default template for a Magentod store. It includes sections for products, categories, and a footer.",
-    "meta_title": "Magentod Default Template",
-    "meta_icon": "assets/images/favicon.ico",
-    "logo_image": "assets/images/logo.png",
-    "logo_alt": "Magentod Logo",
     "navbar": {
         "items": [
             {

@@ -1,33 +1,15 @@
 <?php
+require_once 'functions/functions.php';
+$shop = getShopDatas();
+$home = json_decode(file_get_contents('shop.json'), true);
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-    require_once 'functions/functions.php';
+$page = getPageByShopAndUri($uri);
 
-    $shop = getShopDatas();
-    $home = json_decode(file_get_contents('shop.json'), true);
+if (! $page) {
+    http_response_code(404);
+    exit;
+}
 
-?>
-<!DOCTYPE html>
-<html lang="fr">
-    <?php include 'includes/head.php'; ?>
-<body>
-    <main>
-        <?php include 'includes/header.php'; ?>
-        <div class="site-content">
-            <div class="header">
-                <img src="<?= $home['header_background_image'] ?>" alt="Header image">
-            </div>
-            <?php foreach ($home['sections'] as $section): ?>
-                <div class="section">
-                    <div class="section-content">
-                        <div class="section-title"><?= $section['title'] ?></div>
-                        <div class="section-subtitle"><?= $section['subtitle'] ?></div>
-                        <?php include 'includes/blocks/' . $section['type'] . '.php'; ?>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-            <?php include 'includes/newsletter.php'; ?>
-            <?php include 'includes/footer.php'; ?>
-        </div>
-    </main>
-</body>
-</html>
+$content = $page['content'];
+include 'views/template.php';

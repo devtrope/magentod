@@ -35,3 +35,10 @@ function getProductImages(int $productId) {
     $req->execute();
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function getPageByShopAndUri(string $uri) {
+    $req = database()->prepare('SELECT * FROM page WHERE shop_id = 1 AND url = :uri');
+    $req->bindParam(':uri', $uri, PDO::PARAM_STR);
+    $req->execute();
+    return $req->fetch(PDO::FETCH_ASSOC);
+}
