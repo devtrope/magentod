@@ -9,7 +9,7 @@
     <div class="navbar-content">
         <div class="navbar-content__left">
             <a href="/">
-                <img src="<?= $shop['logo'] ?>" alt="<?= $shop['logo_alt'] ?>" class="logo">
+                <img src="http://localhost:8084/<?= $shop['logo'] ?>" alt="<?= $shop['logo_alt'] ?>" class="logo">
             </a>
             <ul>
                 <?php foreach ($home['navbar']['items'] as $item): ?>

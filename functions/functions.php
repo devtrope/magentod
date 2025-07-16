@@ -31,6 +31,18 @@ function getProductDatas(int $productId) {
     return $req->fetch(PDO::FETCH_ASSOC);
 }
 
+function getProductBySlug(string $slug) {
+    $req = database()->prepare('SELECT p.*,
+    (SELECT image FROM product_image WHERE product_id = p.id AND main = 1) as image,
+    (SELECT image_alt FROM product_image WHERE product_id = p.id AND main = 1) as image_alt,
+    CASE WHEN category_id IS NULL THEN NULL ELSE
+    (SELECT name FROM category WHERE id = p.category_id) END as category
+    FROM product p WHERE p.slug = :slug');
+    $req->bindParam(':slug', $slug, PDO::PARAM_STR);
+    $req->execute();
+    return $req->fetch(PDO::FETCH_ASSOC);
+}
+
 function getProductImages(int $productId) {
     $req = database()->prepare('SELECT * FROM product_image WHERE product_id = :id');
     $req->bindParam(':id', $productId, PDO::PARAM_INT);
@@ -38,39 +50,59 @@ function getProductImages(int $productId) {
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getPageByShopAndUri(string $uri) {
-    $req = database()->prepare('SELECT * FROM page WHERE shop_id = 1 AND url = :uri');
-    $req->bindParam(':uri', $uri, PDO::PARAM_STR);
+function getPageByShopAndUri(string $uri, &$routeParameters = []) {
+    $req = database()->prepare('SELECT * FROM page WHERE shop_id = 1');
     $req->execute();
-    return $req->fetch(PDO::FETCH_ASSOC);
+    $pages = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($pages as $page) {
+        $urlPattern = trim($page['url'], '/');
+
+        $pattern = preg_replace_callback('/\{(\w+)\}/', function($m) {
+            return '(?P<' . $m[1] . '>[^/]+)';
+        }, $urlPattern);
+
+        $regex = '#^' . $pattern . '$#';
+
+        if (preg_match($regex, trim($uri, '/'), $matches)) {
+            foreach ($matches as $key => $value) {
+                if (! is_int($key)) {
+                    $routeParameters[$key] = $value;
+                }
+            }
+
+            return $page;
+        }
+    }
+
+    return false;
 }
 
-function renderBlocks(string $content) {
-    return preg_replace_callback('/\[(\w+)(.*?)\]/', function($matches) {
+function renderBlocks(string $content, array $context = []) {
+    return preg_replace_callback('/\[(\w+)(.*?)\]/', function($matches) use ($context) {
         $block = basename($matches[1]);
-        $paramsString = isset($matches[2]) ? trim($matches[2]) : null;
+        $attributes = $matches[2];
 
-        if ($paramsString) {
-            preg_match_all('/(\w+)=("[^"]*"|\'[^\']*\'|\w+)/', $paramsString, $paramMatches, PREG_SET_ORDER);
-            $params = [];
-    
-            foreach ($paramMatches as $param) {
-                $key = $param[1];
-                $value = trim($param[2], '"\''); // retire les guillemets
-                $params[$key] = $value;
-            }
-    
-            extract($params);
+        preg_match_all('/(\w+)=("[^"]*"|\'[^\']*\'|\w+)/', $attributes, $attributesMatches, PREG_SET_ORDER);
+        $attributesArray = [];
+
+        foreach ($attributesMatches as $attr) {
+            // On nettoie les guillemets autour des valeurs
+            $attributesArray[$attr[1]] = trim($attr[2], '"\'');
         }
+
+        ob_start();
+        extract($context);
+        extract($attributesArray); // Les attributs deviennent des variables
 
         $blockFile = __DIR__ . '/../includes/blocks/' . $block . '.php';
 
         if (file_exists($blockFile)) {
-            ob_start();
             include $blockFile;
-            return ob_get_clean();
         } else {
-            return "<!-- Block [$block] introuvable -->";
+            echo "<!-- Block [$block] introuvable -->";
         }
+
+        return ob_get_clean();
     }, $content);
 }

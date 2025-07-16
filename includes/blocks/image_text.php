@@ -8,7 +8,7 @@
         <?php endif; ?>
         <div class="grid">
             <div class="grid__left">
-                <img src="<?= $image ?>" alt="<?= $image_alt ?>">
+                <img src="http://localhost:8084/<?= $image ?>" alt="<?= $image_alt ?>">
             </div>
             <div class="grid__right">
                 <div class="section-text"><?= $text ?></div>

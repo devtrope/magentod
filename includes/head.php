@@ -4,7 +4,7 @@
     <meta name="description" content="<?= $shop['description'] ?>">
     <title><?= $shop['title'] ?></title>
     <link rel="icon" href="<?= $shop['icon'] ?>" type="image/ico">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="http://localhost:8084/assets/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">

@@ -11,7 +11,7 @@
                 <div class="section-text"><?= $text ?></div>
             </div>
             <div class="grid__right">
-                <img src="<?= $image ?>" alt="<?= $image_alt ?>">
+                <img src="http://localhost:8084/<?= $image ?>" alt="<?= $image_alt ?>">
             </div>
         </div>
     </div>
