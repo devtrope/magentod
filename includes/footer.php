@@ -1,7 +1,7 @@
 <footer>
     <div class="footer-content">
         <div class="footer-content__block">
-            <img src="<?= $shop['logo'] ?>" alt="<?= $shop['logo_alt'] ?>" class="logo">
+            <img src="http://localhost:8084/<?= $shop['logo'] ?>" alt="<?= $shop['logo_alt'] ?>" class="logo">
             <p><?= $home['footer']['text'] ?></p>
         </div>
         <?php foreach ($home['footer']['blocks'] as $block): ?>
