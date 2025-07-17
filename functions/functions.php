@@ -9,13 +9,17 @@ function database() {
         echo 'Connection failed: ' . $e->getMessage();
     }
 }
-function getShopDatas() {
-    $req = database()->query('SELECT * FROM shop WHERE id = 1');
+function getShopDatas(string $slug) {
+    $req = database()->prepare('SELECT * FROM shop WHERE slug = :slug');
+    $req->bindParam(':slug', $slug, PDO::PARAM_STR);
+    $req->execute();
     return $req->fetch(PDO::FETCH_ASSOC);
 }
 
-function getProductsByShop() {
-    $req = database()->query('SELECT p.*, (SELECT image FROM product_image WHERE product_id = p.id AND main = 1) as image, (SELECT image_alt FROM product_image WHERE product_id = p.id AND main = 1) as image_alt FROM product p WHERE shop_id = 1');
+function getProductsByShop(int $id) {
+    $req = database()->prepare('SELECT p.*, (SELECT image FROM product_image WHERE product_id = p.id AND main = 1) as image, (SELECT image_alt FROM product_image WHERE product_id = p.id AND main = 1) as image_alt FROM product p WHERE shop_id = :id');
+    $req->bindParam(':id', $id, PDO::PARAM_INT);
+    $req->execute();
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
@@ -50,8 +54,9 @@ function getProductImages(int $productId) {
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getPageByShopAndUri(string $uri, &$routeParameters = []) {
-    $req = database()->prepare('SELECT * FROM page WHERE shop_id = 1');
+function getPageByShopAndUri(int $shopId, string $uri, &$routeParameters = []) {
+    $req = database()->prepare('SELECT * FROM page WHERE shop_id = :id');
+    $req->bindParam(':id', $shopId, PDO::PARAM_INT);
     $req->execute();
     $pages = $req->fetchAll(PDO::FETCH_ASSOC);
 

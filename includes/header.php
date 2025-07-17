@@ -8,7 +8,7 @@
 <nav class="navbar">
     <div class="navbar-content">
         <div class="navbar-content__left">
-            <a href="/">
+            <a href="/<?= $shop['slug'] ?>" class="logo-link">
                 <img src="http://localhost:8084/<?= $shop['logo'] ?>" alt="<?= $shop['logo_alt'] ?>" class="logo">
             </a>
             <ul>

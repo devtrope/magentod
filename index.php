@@ -1,21 +1,36 @@
 <?php
 require_once 'functions/functions.php';
 
-$shop = getShopDatas();
-$home = json_decode(file_get_contents('shop.json'), true);
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$parsedURI = explode('/', trim($uri, '/'));
+
+$shopSlug = $parsedURI[0] ?? null;
+$calledUri = '/';
+
+if (isset($parsedURI[1])) {
+    $calledUri .= $parsedURI[1];
+}
+
+for ($i = 2; $i < count($parsedURI); $i++) {
+    $calledUri .= '/' . $parsedURI[$i];
+}
+
+$shop = getShopDatas($shopSlug);
+$home = json_decode(file_get_contents('shop.json'), true);
 
 $routeParameters = [];
-$page = getPageByShopAndUri($uri, $routeParameters);
+$page = getPageByShopAndUri($shop['id'], $calledUri, $routeParameters);
 
 if ($page) {
     extract($routeParameters);
-    $context = [];
+    $context = ['shop'];
 
     if (isset($slug)) {
         $product = getProductBySlug($slug);
-        $context = compact('product');
+        $context[] = 'product';
     }
+
+    $context = compact($context);
 
     $content = renderBlocks($page['content'], $context);
     include 'views/template.php';
